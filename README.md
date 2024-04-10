@@ -3,4 +3,4 @@
 ## 1. Installation
 - conda create -n NYUDv2 python=3.11
 - conda activate NYUDv2
-- pip install datasets
+- pip install numpy opencv-python open3d
