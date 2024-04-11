@@ -25,18 +25,18 @@ x = np.linspace(0, width-1, width)
 y = np.linspace(0, height-1, height)
 x, y = np.meshgrid(x, y)
 
-z = depth_image
-x = (x - cx_d) * z / fx_d
-y = (y - cy_d) * z / fy_d
+Z = depth_image
+X = (x - cx_d) * Z / fx_d
+Y = (y - cy_d) * Z / fy_d
 
 # Filter out points where depth is 0
 mask = depth_image > 0
-x = x[mask]
-y = y[mask]
-z = z[mask]
+X = X[mask]
+Y = Y[mask]
+Z = Z[mask]
 
 # Stack to get a 3D point for each pixel
-points = np.stack((x, y, z), axis=-1)
+points = np.stack((X, Y, Z), axis=-1)
 
 # Create Open3D point cloud
 pcd = o3d.geometry.PointCloud()
