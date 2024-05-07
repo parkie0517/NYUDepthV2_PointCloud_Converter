@@ -2,8 +2,8 @@
 
 # Declare an array of URLs
 urls=(
-    "http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/basements.zip"
-    "http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/bathrooms_part1.zip"
+    #"http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/basements.zip"
+    #"http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/bathrooms_part1.zip"
     "http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/bathrooms_part2.zip"
     "http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/bathrooms_part3.zip"
     "http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/bathrooms_part4.zip"
@@ -44,6 +44,10 @@ urls=(
 # Directory where files will be downloaded and extracted
 download_directory="/root/datasets/NYU_Depth_V2"
 
+# Create the directory if it does not exist
+mkdir -p "$download_directory"
+cd "$download_directory"
+
 # Loop over each URL
 for url in "${urls[@]}"; do
     echo "Downloading $url..."
@@ -53,7 +57,7 @@ for url in "${urls[@]}"; do
     file_name=$(basename "$url")
 
     echo "Unzipping $file_name..."
-    unzip -o "$file_name"
+    unzip -o "$file_name" > /dev/null
 done
 
 echo "All files have been downloaded and extracted."
