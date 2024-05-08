@@ -98,6 +98,6 @@ if __name__ == "__main__":
     # define some things
     input_path = "/root/datasets/NYU_Depth_V2"
     output_path = "/root/datasets/NYU_Depth_V2/dataset"
-    num_data = 1499
+    num_data = 1449
     
     main(input_path, output_path, num_data)
