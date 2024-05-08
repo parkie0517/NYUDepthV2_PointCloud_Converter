@@ -3,6 +3,7 @@ import open3d as o3d
 import sys
 import os
 import imageio.v2 as imageio
+import torch
 
 # Depth camera's intrinsic parameters
 fx_d = 5.8262448167737955e+02
@@ -49,6 +50,12 @@ def convert(file_base, input_path, output_path):
     label_image_array = np.array(label_image).astype(np.int64)
     label_height, label_width = label_image_array.shape
     label_GT = label_image_array.reshape(label_height * label_width, 1)
+
+    # Save data
+    sample = {'coord':depth_PC, 'semantic_gt':label_GT}
+
+    save_path = os.path.join(output_path, f'{file_base}.pth') 
+    torch.save(sample, save_path)
     
     """
     print(depth_PC.shape)
@@ -68,18 +75,14 @@ def convert(file_base, input_path, output_path):
 
     print(f'Point cloud saved to {output_path}')
     """
-
-    return depth_PC, label_GT
+    
 
 def main(input_path, output_path, num_data):
 
     for i in range(1, num_data + 1):
         file_base = f"{i:06d}"
-        depth_PC, label_GT = convert(file_base, input_path, output_path)
+        convert(file_base, input_path, output_path)
 
-        sample = {'coord':depth_PC, 'semantic_GT':label_GT}
-        print(type(sample))
-        print(sample.keys())
         exit(0)
 
 
