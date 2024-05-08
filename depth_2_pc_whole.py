@@ -2,15 +2,13 @@ import numpy as np
 import open3d as o3d
 import sys
 import os
-import imageio
+import imageio.v2 as imageio
 
 # Depth camera's intrinsic parameters
 fx_d = 5.8262448167737955e+02
 fy_d = 5.8269103270988637e+02
 cx_d = 3.1304475870804731e+02
 cy_d = 2.3844389626620386e+02
-
-
 
 def convert(file_base, input_path, output_path):
     # create paths for the input images
@@ -23,11 +21,11 @@ def convert(file_base, input_path, output_path):
 
     # Convert the image to a numpy array
     depth_image_array = np.array(depth_image)
-    height, width = depth_image_array.shape
+    depth_height, depth_width = depth_image_array.shape
 
     # Create a meshgrid of pixel coordinates
-    x = np.linspace(0, width-1, width)
-    y = np.linspace(0, height-1, height)
+    x = np.linspace(0, depth_width-1, depth_width)
+    y = np.linspace(0, depth_height-1, depth_height)
     x, y = np.meshgrid(x, y)
 
     # Conversion
@@ -35,18 +33,31 @@ def convert(file_base, input_path, output_path):
     X = (x - cx_d) * Z / fx_d
     Y = (y - cy_d) * Z / fy_d
 
+    """
     # Filter out points where depth is 0
     mask = depth_image_array > 0
     X = X[mask]
     Y = Y[mask]
     Z = Z[mask]
+    """
 
     # Stack to get a 3D point for each pixel
     depth_PC = np.stack((X, Y, Z), axis=-1)
-    print(depth_PC[0:10])
-    print(type(depth_PC[0, 2]))
+    depth_PC = depth_PC.reshape(depth_height * depth_width, 3)
 
-    exit(0)
+    # Convert the image to a numpy array
+    label_image_array = np.array(label_image).astype(np.int64)
+    label_height, label_width = label_image_array.shape
+    label_GT = label_image_array.reshape(label_height * label_width, 1)
+    
+    """
+    print(depth_PC.shape)
+    print(label_GT.shape)
+    """
+
+
+
+    """
     # Create a point clou data
     pcd = o3d.geometry.PointCloud()
     pcd.points = o3d.utility.Vector3dVector(points)
@@ -56,16 +67,20 @@ def convert(file_base, input_path, output_path):
     o3d.io.write_point_cloud(output_path, pcd)
 
     print(f'Point cloud saved to {output_path}')
+    """
 
-    return None, None
+    return depth_PC, label_GT
 
 def main(input_path, output_path, num_data):
 
     for i in range(1, num_data + 1):
         file_base = f"{i:06d}"
-        depth_PC, label_PC = convert(file_base, input_path, output_path)
-        
-        sample = {}
+        depth_PC, label_GT = convert(file_base, input_path, output_path)
+
+        sample = {'coord':depth_PC, 'semantic_GT':label_GT}
+        print(type(sample))
+        print(sample.keys())
+        exit(0)
 
 
 
