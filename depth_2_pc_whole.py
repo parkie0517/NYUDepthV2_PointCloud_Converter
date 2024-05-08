@@ -82,11 +82,9 @@ def main(input_path, output_path, num_data):
     for i in range(1, num_data + 1):
         file_base = f"{i:06d}"
         convert(file_base, input_path, output_path)
+        print(f'Done creating: {file_base}.pth')
 
-        exit(0)
-
-
-
+    """
     # Define the parts of your path
     input_depth_path = os.path.join(input_path, "depth")
     image_name = "000001"
@@ -94,7 +92,7 @@ def main(input_path, output_path, num_data):
     # Use os.path.join to concatenate the directory and filename
     full_path = os.path.join(input_depth_path, file_name)
     convert(full_path, output_path, image_name)
-    
+    """
 
 if __name__ == "__main__":
     # define some things
