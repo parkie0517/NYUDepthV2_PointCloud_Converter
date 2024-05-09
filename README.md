@@ -16,10 +16,14 @@ This is for my own reference, you do not need to read this section.
     - Check if they are downloaded well
     - RGB was downloaded from [Github Repo](https://github.com/ankurhanda/nyuv2-meta-data?tab=readme-ov-file)
     - I got the rest from my colleague (Ph.D. Course Soyun Choi)
-- Donwload S3DIS [Download Form](https://docs.google.com/forms/d/e/1FAIpQLScDimvNMCGhy_rmBA2gHfDu3naktRm6A8BPwAWWDv-Uhm6Shw/viewform?c=0&w=1&fbzx=5903082483074287663)
+- Donwload S3DIS [Download Form](https://docs.google.com/forms/d/e/1FAIpQLScDimvNMCGhy_rmBA2gHfDu3naktRm6A8BPwAWWDv-Uhm6Shw/viewform?c=0&w=1&fbzx=5903082483074287663) ✅
     - Understand how S3DIS is composed
+    - Okay each data sample has annotations foler and the PC data
+    - I can never ever ever convert NYU to this format....
+    - So, I need to convert NYU into the preprocessed format of the S3DIS
 - Find the neccessary matrices for the conversion process ⬜
-    - 
+    - Understand how NYU depth V2 is formatted
+    - Find out if the data have been aligned already.
 - Understand the S3DIS dataset format ⬜
 - Preprocess the data ⬜
 - Create the conversion code ⬜
