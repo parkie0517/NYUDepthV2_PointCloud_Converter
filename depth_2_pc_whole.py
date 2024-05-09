@@ -34,6 +34,9 @@ def convert(file_base, input_path, output_path):
     X = (x - cx_d) * Z / fx_d
     Y = (y - cy_d) * Z / fy_d
 
+
+
+
     """
     # Filter out points where depth is 0
     mask = depth_image_array > 0
@@ -46,13 +49,20 @@ def convert(file_base, input_path, output_path):
     depth_PC = np.stack((X, Y, Z), axis=-1)
     depth_PC = depth_PC.reshape(depth_height * depth_width, 3)
 
+    """TEST"""
+    # 1. scale
+    scaled_depth_PC = depth_PC / 100.0
+    # 2. align
+    min_z = scaled_depth_PC[:, 2].min()
+    scaled_depth_PC[:, 2] -= min_z
+
     # Convert the image to a numpy array
     label_image_array = np.array(label_image).astype(np.int64)
     label_height, label_width = label_image_array.shape
     label_GT = label_image_array.reshape(label_height * label_width, 1)
 
     # Save data
-    sample = {'coord':depth_PC, 'semantic_gt':label_GT}
+    sample = {'coord':scaled_depth_PC, 'semantic_gt':label_GT}
 
     save_path = os.path.join(output_path, f'{file_base}.pth') 
     torch.save(sample, save_path)

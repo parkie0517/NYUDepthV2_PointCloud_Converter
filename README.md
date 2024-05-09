@@ -4,7 +4,6 @@
 - conda create -n NYUDv2 python=3.11
 - conda activate NYUDv2
 - pip install numpy opencv-python open3d
-- conda install pytorch::pytorch
 
 ## 2. Code Usage
 - Converting
