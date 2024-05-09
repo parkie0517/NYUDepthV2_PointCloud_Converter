@@ -17,13 +17,16 @@ cy_d = 2.3844389626620386e+02
 def convert(file_base, input_path, output_path):
     # create paths for the input images
     depth_path = os.path.join(input_path, "depth", f"{file_base}.png")
-    label_path = os.path.join(input_path, "label40", f"{file_base}.png") 
+    label_path = os.path.join(input_path, "label40", f"{file_base}.png")
+    rgb_path = os.path.join(input_path, "rgb", f"{file_base}.png")
     
     # read the images
     depth_image = imageio.imread(depth_path)
     label_image = imageio.imread(label_path)
+    rgb_image = imageio.imread(rgb_path)
 
-    # Convert the image to a numpy array
+    """Depth Image Processing"""
+    # Convert the depth image to a numpy array
     depth_image_array = np.array(depth_image)
     depth_height, depth_width = depth_image_array.shape
 
@@ -52,17 +55,32 @@ def convert(file_base, input_path, output_path):
     depth_PC = np.stack((X, Y, Z), axis=-1)
     depth_PC = depth_PC.reshape(depth_height * depth_width, 3)
 
-    """TEST"""
-    # 1. scale
+    # Scale the Point Cloud
     scaled_depth_PC = depth_PC / 100.0
-    # 2. align
+    # Aling the Point Cloud
     min_z = scaled_depth_PC[:, 2].min()
     scaled_depth_PC[:, 2] -= min_z
 
-    # Convert the image to a numpy array
+    """Label Image Processing"""
+    # Convert the label image to a numpy array
     label_image_array = np.array(label_image).astype(np.int64)
     label_height, label_width = label_image_array.shape
     label_GT = label_image_array.reshape(label_height * label_width, 1)
+
+
+    """RGB Image Processing"""
+    # Convert the depth image to a numpy array
+    rgb_image_array = np.array(rgb_image)
+    print(rgb_image_array.shape)
+    exit(0)
+    rgb_height, rgb_width = rgb_image_array.shape
+
+    # Stack to get a 3D point for each pixel
+    depth_PC = np.stack((X, Y, Z), axis=-1)
+    depth_PC = depth_PC.reshape(depth_height * depth_width, 3)
+
+
+
 
     # Save data
     sample = {'coord':scaled_depth_PC, 'semantic_gt':label_GT}
