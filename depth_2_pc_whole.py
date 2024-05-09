@@ -6,10 +6,13 @@ import imageio.v2 as imageio
 import torch
 
 # Depth camera's intrinsic parameters
+# acquired from camera_params.m which is part of the NYU Depth V2's official toolbox
 fx_d = 5.8262448167737955e+02
 fy_d = 5.8269103270988637e+02
 cx_d = 3.1304475870804731e+02
 cy_d = 2.3844389626620386e+02
+
+
 
 def convert(file_base, input_path, output_path):
     # create paths for the input images

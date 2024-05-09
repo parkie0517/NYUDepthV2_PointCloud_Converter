@@ -26,7 +26,10 @@ This is for my own reference, you do not need to read this section.
     - Understand how NYU depth V2 is formatted
     - Find out if the data have been aligned already.
         - Guess what?! The rgb and depth images are already synchronized! meaning that the pixels in the same coordinate represents the same location!
-        - So I only need the matrix that converts the rgb and depth images to the 3D world coordinate system
+        - So I only need the intrinsic matrix that converts the rgb and depth images to the 3D camera coordinate system
+    - Acquire the camera intrinsics (can be acquired from NYU Depth V2's toolbox. it is inside camera_params.m file)
+        - f_x, f_y, c_x, c_y
+        - 
 - Preprocess the data ⬜
 - Create the conversion code ⬜
 - Create a visualization code ⬜
