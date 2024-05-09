@@ -1,5 +1,24 @@
 # NYUDv2_Depth_Image_to_Point_Cloud
 
+## What is this repo for?!
+I am trying to convert NYU Depth V2 dataset to point cloud dataset.
+
+## Prerequisites
+- Depth Image
+- Point Cloud
+- Coding skills (Linux, Python, Numpy, Conda)
+- 3D Geometry (Camera Parameters)
+
+## What I need to do (⬜, ✅)
+- Download the NYU Depth V2 Data ⬜
+- Find the neccessary matrices for conversion ⬜
+- Create the conversion code ⬜
+- ⬜
+- ⬜
+- ⬜
+- ⬜
+- ⬜
+
 ## 1. Installation
 - conda create -n NYUDv2 python=3.11
 - conda activate NYUDv2
