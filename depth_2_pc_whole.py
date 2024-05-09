@@ -14,7 +14,8 @@ cy_d = 2.3844389626620386e+02
 
 
 
-def convert(file_base, input_path, output_path):
+def convert(file_base, input_path, output_path, scale):
+    """1. Settings before we begin"""
     # create paths for the input images
     depth_path = os.path.join(input_path, "depth", f"{file_base}.png")
     label_path = os.path.join(input_path, "label40", f"{file_base}.png")
@@ -25,7 +26,7 @@ def convert(file_base, input_path, output_path):
     label_image = imageio.imread(label_path)
     rgb_image = imageio.imread(rgb_path)
 
-    """Depth Image Processing"""
+    """2. Depth Image Processing"""
     # Convert the depth image to a numpy array
     depth_image_array = np.array(depth_image)
     depth_height, depth_width = depth_image_array.shape
@@ -56,56 +57,33 @@ def convert(file_base, input_path, output_path):
     depth_PC = depth_PC.reshape(depth_height * depth_width, 3)
 
     # Scale the Point Cloud
-    scaled_depth_PC = depth_PC / 100.0
+    scaled_depth_PC = depth_PC / scale
     # Aling the Point Cloud
     min_z = scaled_depth_PC[:, 2].min()
     scaled_depth_PC[:, 2] -= min_z
 
-    """Label Image Processing"""
+    """3. Label Image Processing"""
     # Convert the label image to a numpy array
     label_image_array = np.array(label_image).astype(np.int64)
     label_height, label_width = label_image_array.shape
     label_GT = label_image_array.reshape(label_height * label_width, 1)
 
 
-    """RGB Image Processing"""
+    """4. RGB Image Processing"""
     # Convert the depth image to a numpy array
     rgb_image_array = np.array(rgb_image)
-    print(rgb_image_array.shape)
-    exit(0)
-    rgb_height, rgb_width = rgb_image_array.shape
+    rgb_height, rgb_width, rgb_channel = rgb_image_array.shape # (480, 640, 3)
 
-    # Stack to get a 3D point for each pixel
-    depth_PC = np.stack((X, Y, Z), axis=-1)
-    depth_PC = depth_PC.reshape(depth_height * depth_width, 3)
+    # Reshape this rgb image
+    reshaped_rgb = rgb_image_array.reshape(rgb_height * rgb_width, rgb_channel)
 
 
-
-
-    # Save data
-    sample = {'coord':scaled_depth_PC, 'semantic_gt':label_GT}
+    """ 5. Save Data """
+    sample = {'coord':scaled_depth_PC, 'color':reshaped_rgb, 'semantic_gt':label_GT}
 
     save_path = os.path.join(output_path, f'{file_base}.pth') 
     torch.save(sample, save_path)
-    
-    """
-    print(depth_PC.shape)
-    print(label_GT.shape)
-    """
 
-
-
-    """
-    # Create a point clou data
-    pcd = o3d.geometry.PointCloud()
-    pcd.points = o3d.utility.Vector3dVector(points)
-
-    # Save the point cloud
-    output_path = output_path + f"/{image_name}.pcd"
-    o3d.io.write_point_cloud(output_path, pcd)
-
-    print(f'Point cloud saved to {output_path}')
-    """
     
 
 def main(input_path, output_path, num_data):
@@ -115,20 +93,12 @@ def main(input_path, output_path, num_data):
         convert(file_base, input_path, output_path)
         print(f'Done creating: {file_base}.pth')
 
-    """
-    # Define the parts of your path
-    input_depth_path = os.path.join(input_path, "depth")
-    image_name = "000001"
-    file_name = image_name + ".png"
-    # Use os.path.join to concatenate the directory and filename
-    full_path = os.path.join(input_depth_path, file_name)
-    convert(full_path, output_path, image_name)
-    """
 
 if __name__ == "__main__":
     # define some things
     input_path = "/root/datasets/NYU_Depth_V2"
     output_path = "/root/datasets/NYU_Depth_V2/dataset"
     num_data = 1449
+    scale = 100.0
     
-    main(input_path, output_path, num_data)
+    main(input_path, output_path, num_data, scale)
