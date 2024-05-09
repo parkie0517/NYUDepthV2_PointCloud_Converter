@@ -22,15 +22,16 @@ This is for my own reference, you do not need to read this section.
     - Okay each data sample has annotations foler and the PC data
     - I can never ever ever convert NYU to this format....
     - So, I need to convert NYU into the preprocessed format of the S3DIS
-- Find the neccessary matrices for the conversion process ⬜
+- Find the neccessary matrices for the conversion process ✅
     - Understand how NYU depth V2 is formatted
     - Find out if the data have been aligned already.
         - Guess what?! The rgb and depth images are already synchronized! meaning that the pixels in the same coordinate represents the same location!
         - So I only need the intrinsic matrix that converts the rgb and depth images to the 3D camera coordinate system
     - Acquire the camera intrinsics (can be acquired from NYU Depth V2's toolbox. it is inside camera_params.m file)
         - f_x, f_y, c_x, c_y
-        - 
-- Preprocess the data ⬜
+- Preprocess the data ✅
+    - put them in the correct directory
+    - make the files names' correct
 - Create the conversion code ⬜
 - Create a visualization code ⬜
 - Complete writing the github README file to share knowledge with others! ⬜
