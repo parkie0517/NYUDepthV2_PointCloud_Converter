@@ -1,23 +1,37 @@
-# NYUDv2_Depth_Image_to_Point_Cloud
+# NYUDv2_Depth_Image_to_Point_Cloud ⬜
 
-## What is this repo for?!
+## What is this repo for?! ⬜
 I am trying to convert NYU Depth V2 dataset to point cloud dataset.
 
-## Prerequisites
+## Prerequisites ✅
 - Depth Image
 - Point Cloud
 - Coding skills (Linux, Python, Numpy, Conda)
-- 3D Geometry (Camera Parameters)
+- 3D Geometry (Coordinate System, Calibration)
 
 ## What I need to do (⬜, ✅)
-- Download the NYU Depth V2 Data ⬜
-- Find the neccessary matrices for conversion ⬜
+This is for my own reference, you do not need to read this section.
+- Download the NYU Depth V2 Data ✅
+    - RGB, Depth, Label40, train.txt, test.txt
+    - Check if they are downloaded well
+    - RGB was downloaded from [Github Repo](https://github.com/ankurhanda/nyuv2-meta-data?tab=readme-ov-file)
+    - I got the rest from my colleague (Ph.D. Course Soyun Choi)
+- Donwload S3DIS [Download Form](https://docs.google.com/forms/d/e/1FAIpQLScDimvNMCGhy_rmBA2gHfDu3naktRm6A8BPwAWWDv-Uhm6Shw/viewform?c=0&w=1&fbzx=5903082483074287663)
+    - Understand how S3DIS is composed
+- Find the neccessary matrices for the conversion process ⬜
+    - 
+- Understand the S3DIS dataset format ⬜
+- Preprocess the data ⬜
 - Create the conversion code ⬜
+- Create a visualization code ⬜
+- Complete writing the github README file to share knowledge with others! ⬜
 - ⬜
 - ⬜
 - ⬜
-- ⬜
-- ⬜
+
+## Prepare NYU Depth V2 Data ⬜
+- RGB, Depth, Label, train.txt, test.txt, calibration information
+- Download the files above by clicking on this link()
 
 ## 1. Installation
 - conda create -n NYUDv2 python=3.11
