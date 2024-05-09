@@ -7,7 +7,8 @@ I am trying to convert NYU Depth V2 dataset to point cloud dataset.
 - Depth Image
 - Point Cloud
 - Coding skills (Linux, Python, Numpy, Conda)
-- 3D Geometry (Coordinate System, Calibration)
+- 3D Reconstruction (2D Image Coordinate System → 3D Camera Coodinate System)
+    - If you do not know about 3D reconstruction then read this post, written by me :D [3D Recon](https://medium.com/@parkie0517/2d-to-3d-conversion-learning-how-to-convert-rgb-images-to-point-cloud-025a1fd77abe)
 
 ## What I need to do (⬜, ✅)
 This is for my own reference, you do not need to read this section.
@@ -24,7 +25,8 @@ This is for my own reference, you do not need to read this section.
 - Find the neccessary matrices for the conversion process ⬜
     - Understand how NYU depth V2 is formatted
     - Find out if the data have been aligned already.
-- Understand the S3DIS dataset format ⬜
+        - Guess what?! The rgb and depth images are already synchronized! meaning that the pixels in the same coordinate represents the same location!
+        - So I only need the matrix that converts the rgb and depth images to the 3D world coordinate system
 - Preprocess the data ⬜
 - Create the conversion code ⬜
 - Create a visualization code ⬜
