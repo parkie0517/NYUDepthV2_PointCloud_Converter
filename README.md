@@ -32,7 +32,8 @@ This is for my own reference, you do not need to read this section.
 - Preprocess the data ✅
     - put them in the correct directory
     - make the files names' correct
-- Create the conversion code ⬜
+- Create the conversion code ✅
+- Split into train and test ⬜
 - Create a visualization code ⬜
 - Complete writing the github README file to share knowledge with others! ⬜
 - ⬜

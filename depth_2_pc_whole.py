@@ -28,7 +28,7 @@ def convert(file_base, input_path, output_path, scale):
 
     """2. Depth Image Processing"""
     # Convert the depth image to a numpy array
-    depth_image_array = np.array(depth_image)
+    depth_image_array = np.array(depth_image).astype(np.float64)
     depth_height, depth_width = depth_image_array.shape
 
     # Create a meshgrid of pixel coordinates
@@ -71,7 +71,7 @@ def convert(file_base, input_path, output_path, scale):
 
     """4. RGB Image Processing"""
     # Convert the depth image to a numpy array
-    rgb_image_array = np.array(rgb_image)
+    rgb_image_array = np.array(rgb_image).astype(np.float64)
     rgb_height, rgb_width, rgb_channel = rgb_image_array.shape # (480, 640, 3)
 
     # Reshape this rgb image
@@ -86,12 +86,13 @@ def convert(file_base, input_path, output_path, scale):
 
     
 
-def main(input_path, output_path, num_data):
+def main(input_path, output_path, num_data, scale):
 
     for i in range(1, num_data + 1):
         file_base = f"{i:06d}"
-        convert(file_base, input_path, output_path)
+        convert(file_base, input_path, output_path, scale)
         print(f'Done creating: {file_base}.pth')
+
 
 
 if __name__ == "__main__":

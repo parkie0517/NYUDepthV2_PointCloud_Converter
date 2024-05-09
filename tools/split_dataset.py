@@ -15,9 +15,17 @@ def move_files(source_dir, destination_dir, text_path):
 if __name__ == "__main__":
     # Define path!
     source_dir = '/root/datasets/NYU_Depth_V2/dataset/' # Define the source path of the file
+    destination_dir = '/root/datasets/NYU_Depth_V2/dataset/train/' # Define the destination path
+    text_path = '/root/datasets/NYU_Depth_V2/train.txt' # path of the train.txt or test.txt
+
+    print('Begin moving training files! :O')
+    move_files(source_dir, destination_dir, text_path)
+    print('Moving training files complete! :D')
+
+
     destination_dir = '/root/datasets/NYU_Depth_V2/dataset/test/' # Define the destination path
     text_path = '/root/datasets/NYU_Depth_V2/test.txt' # path of the train.txt or test.txt
 
-    print('Begin moving files! :O')
+    print('Begin moving testing files! :O')
     move_files(source_dir, destination_dir, text_path)
-    print('Moving files complete! :D')
+    print('Moving testing files complete! :D')
