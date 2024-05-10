@@ -81,7 +81,7 @@ If you run into any "missing moudle" erros when running the code please install 
     - scale: this is used to scale down the converted point cloud. if you don't want to scale the point cloud, then make it 1
     - now run the code below!
     - python depth_2_pc_complete.py
-    - make sure files have been converted properly by checking the 'dataset' folder. there should be from '000001.pth' to '001449.pth' files in the 'dataset' folder.
+    - make sure that the files have been converted properly by checking the 'dataset' folder. there should be from '000001.pth' to '001449.pth' files in the 'dataset' folder.
     - now run this code to split the data into train and test 
     - ./tools/split_dataset.py
     - after running the code above, files should be moved into the 'train' and 'test' folder automatically
