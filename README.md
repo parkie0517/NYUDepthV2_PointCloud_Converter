@@ -44,14 +44,13 @@ This is for my own reference, you do not need to read this section.
 
 
 ## NYU Dataset Description
-This is how the dataset should be structed.  
+This is how the converted dataset is going to be structed in the end.  
 ![alt text](image.png)  
 
 | Dataset | Number of Data | Size (GB) | Average Data Size (MB) |
 |---------|----------------|-----------|------------------------|
 | Train   | 795            | 16        | 20.13                  |
 | Test    | 654            | 13        | 19.88                  |
-
 
 
 ## Prepare NYU Depth V2 Data ⬜
