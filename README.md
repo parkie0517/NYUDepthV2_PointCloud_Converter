@@ -1,9 +1,10 @@
-# NYUDv2_Depth_Image_to_Point_Cloud ⬜
+# NYUDepthV2_PointCloud_Converter
 
-## What is this repo for?! ⬜
-I am trying to convert NYU Depth V2 dataset to point cloud dataset.
+## What is this repository for?!
+The purpose of this repo is to help you convert NYU Depth V2 Dataset into a Point Cloud Dataset. I wanted to test how well 3D Semantic Segmentation models can be trained on 2D Depth and 2D RGB images.
 
-## Prerequisites ✅
+## Prerequisites
+Below are some skills that you need to understand how my code works.
 - Depth Image
 - Point Cloud
 - Coding skills (Linux, Python, Numpy, Conda)
