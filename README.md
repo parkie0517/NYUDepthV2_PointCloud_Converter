@@ -1,17 +1,20 @@
 # NYUDepthV2_PointCloud_Converter
 
+
 ## What is this repository for?!
-The purpose of this repo is to help you convert NYU Depth V2 Dataset into a Point Cloud Dataset. I wanted to test how well 3D Semantic Segmentation models can be trained on 2D Depth and 2D RGB images.
+The purpose of this repo is to help you convert NYU Depth V2 Dataset into a Point Cloud Dataset. I wanted to test how well 3D Semantic Segmentation (like PointTransformerV3) models can be trained on 2D Depth and 2D RGB images.
+
 
 ## Prerequisites
-Below are some skills that you need to understand how my code works.
+Below are some knowledge that you need to understand how the reconstruction works.
 - Depth Image
 - Point Cloud
-- Coding skills (Linux, Python, Numpy, Conda)
+- Coding & Tech skills (Linux, Python, Numpy, Conda, Shell)
 - 3D Reconstruction (2D Image Coordinate System → 3D Camera Coodinate System)
-    - If you do not know about 3D reconstruction then read this post, written by me :D [3D Recon](https://medium.com/@parkie0517/2d-to-3d-conversion-learning-how-to-convert-rgb-images-to-point-cloud-025a1fd77abe)
+    - If you do not know about 3D reconstruction, then read this post, written by me :D [3D Recon](https://medium.com/@parkie0517/2d-to-3d-conversion-learning-how-to-convert-rgb-images-to-point-cloud-025a1fd77abe)
 
-## What I need to do (⬜, ✅)
+
+## What I need to do
 This is for my own reference, you do not need to read this section.
 - Download the NYU Depth V2 Data ✅
     - RGB, Depth, Label40, train.txt, test.txt
@@ -36,14 +39,26 @@ This is for my own reference, you do not need to read this section.
 - Create the conversion code ✅
 - Split into train and test ✅
 - Create a visualization code ⬜
-- Complete writing the github README file to share knowledge with others! ⬜
-- ⬜
-- ⬜
-- ⬜
+- Complete writing the github README file to share knowledge with others! ✅
+
+
+## NYU Dataset Description
+This is how the dataset should be structed.
+![alt text](image.png)  
+
+| Dataset | Number of Data | Size (GB) | Average Data Size (MB) |
+|---------|----------------|-----------|------------------------|
+| Train   | 795            | 16        | 20.13                  |
+| Test    | 654            | 13        | 19.88                  |
+
+
 
 ## Prepare NYU Depth V2 Data ⬜
-- RGB, Depth, Label, train.txt, test.txt, calibration information
-- Download the files above by clicking on this link()
+The simplest way is to download the whole NYU dataset. However it's too big. So I will tell you a faster way to download the files that you need.
+- RGB(train & test): [ankurhanda/nyuv2-meta-data](https://github.com/ankurhanda/nyuv2-meta-data?tab=readme-ov-file)
+- Depth, Label, train.txt, test.txt: LINK TO BE CREATED SOON
+- calibration information: [Goto download section and click on toolbox](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)
+
 
 ## 1. Installation
 - conda create -n NYUDv2 python=3.11
