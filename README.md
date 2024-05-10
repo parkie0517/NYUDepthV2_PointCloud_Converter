@@ -12,7 +12,7 @@ Below are some knowledge that you need to understand how the reconstruction work
 - Coding & Tech skills (Linux, Python, Numpy, Conda, Shell)
 - 3D Reconstruction (2D Image Coordinate System → 3D Camera Coodinate System)
     - If you do not know about 3D reconstruction, then read this post, written by me :D [3D Recon](https://medium.com/@parkie0517/2d-to-3d-conversion-learning-how-to-convert-rgb-images-to-point-cloud-025a1fd77abe)  
-    ![alt text](image-1.png)
+    ![alt text](./images_for_readme/image-1.png)
 
 
 ## What I need to do
@@ -45,7 +45,7 @@ This is for my own reference, you do not need to read this section.
 
 ## NYU Dataset Description 
 This is how the converted dataset is going to be structed in the end.  
-![alt text](image.png)  
+![alt text](./images_for_readme/image.png)  
 
 | Dataset | Number of Data | Size (GB) | Average Data Size (MB) |
 |---------|----------------|-----------|------------------------|
@@ -60,7 +60,7 @@ The simplest way is to download the whole NYU dataset. However it's too big. So 
 - calibration information: [Goto download section and click on toolbox](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)
 
 Okay now that you have downloaded everything, unzip them all! Then, make sturcture your directory like the image below.  
-![alt text](image-2.png)  
+![alt text](./images_for_readme/image-2.png)  
 The train and test folders should be empty. depth, label40 and rgb folders should have the images from 000001.png to 001449.png.
 
 
