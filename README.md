@@ -11,7 +11,8 @@ Below are some knowledge that you need to understand how the reconstruction work
 - Point Cloud
 - Coding & Tech skills (Linux, Python, Numpy, Conda, Shell)
 - 3D Reconstruction (2D Image Coordinate System → 3D Camera Coodinate System)
-    - If you do not know about 3D reconstruction, then read this post, written by me :D [3D Recon](https://medium.com/@parkie0517/2d-to-3d-conversion-learning-how-to-convert-rgb-images-to-point-cloud-025a1fd77abe)
+    - If you do not know about 3D reconstruction, then read this post, written by me :D [3D Recon](https://medium.com/@parkie0517/2d-to-3d-conversion-learning-how-to-convert-rgb-images-to-point-cloud-025a1fd77abe)  
+    ![alt text](image-1.png)
 
 
 ## What I need to do
@@ -43,7 +44,7 @@ This is for my own reference, you do not need to read this section.
 
 
 ## NYU Dataset Description
-This is how the dataset should be structed.
+This is how the dataset should be structed.  
 ![alt text](image.png)  
 
 | Dataset | Number of Data | Size (GB) | Average Data Size (MB) |
