@@ -61,6 +61,8 @@ The simplest way is to download the whole NYU dataset. However it's too big. So 
 
 Okay now that you have downloaded everything, unzip them all! Then, make sturcture your directory like the image below.  
 ![alt text](image-2.png)  
+The ./dataset/train and ./dataset/test should be empty. And depth, label40, rgb folders should have the images from 000001.png to 001449.png.
+
 
 ## 1. Installation
 Follow the instructions below.
