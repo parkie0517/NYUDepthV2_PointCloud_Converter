@@ -2,7 +2,7 @@
 
 
 ## What is this repository for?!
-The purpose of this repo is to help you convert NYU Depth V2 Dataset into a Point Cloud Dataset. I wanted to test how well 3D Semantic Segmentation (like PointTransformerV3) models can be trained on 2D Depth and 2D RGB images.
+The purpose of this repo is to help you convert NYU Depth V2 Dataset into a Point Cloud Dataset. I wanted to test how well 3D Semantic Segmentation (like PointTransformerV3) models can be trained on 2D Depth and 2D RGB images. The NYU Depth V2 Dataset I am converting has 1449 images in total. There are 41 classes including diverse objects. To view the names of the classes click [here](https://github.com/parkie0517/NYUDepthV2_PointCloud_Converter/blob/main/classes.txt). If you want to check out more about NYU Depth V2 dataset, then click [here](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html).
 
 
 ## Prerequisites
@@ -39,7 +39,7 @@ This is for my own reference, you do not need to read this section.
     - make the files names' correct
 - Create the conversion code ✅
 - Split into train and test ✅
-- Create a visualization code ⬜
+- Create a visualization code ✅
 - Complete writing the github README file to share knowledge with others! ✅
 
 
@@ -53,7 +53,7 @@ This is how the converted dataset is going to be structed in the end.
 | Test    | 654            | 13        | 19.88                  |
 
 
-## Prepare NYU Depth V2 Data ⬜
+## Prepare NYU Depth V2 Data
 The simplest way is to download the whole NYU dataset. However it's too big. So I will tell you a faster way to download the files that you need.
 - RGB(train & test): [ankurhanda/nyuv2-meta-data](https://github.com/ankurhanda/nyuv2-meta-data?tab=readme-ov-file)
 - Depth, Label, train.txt, test.txt: LINK TO BE CREATED SOON
@@ -85,9 +85,12 @@ If you run into any "missing moudle" erros when running the code please install 
     - now run this code to split the data into train and test 
     - ./tools/split_dataset.py
     - after running the code above, files should be moved into the 'train' and 'test' folder automatically
-- 2. Converting 
-- Visualizing
+- 2. Visualizing the Point Cloud
+    - run the code below to change a png file into a 'pcd' file format (pcd is the point cloud data)
+    - python ./depth_2_pc.py PATH_OF_THE_INPUT_DEPTH_IMAGE
+    - then, you will see a 'output.pcd' file
+    - now run the code below
     - python visualize_pc.py NAME_OF_THE_POINT_CLOUD_FILE
  
-## 3. Reuslt
+## 3. Visualization Reuslt
 ![image](https://github.com/parkie0517/NYUDv2_Depth_Image_to_Point_Cloud/assets/80407632/f56250b5-c9bb-42b9-9396-0a85883e991f)
