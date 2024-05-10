@@ -74,8 +74,18 @@ Follow the instructions below.
 
 ## 2. Code Usage
 If you run into any "missing moudle" erros when running the code please install the missing modules.
-- Converting
-    - python depth_2_pc.py NAME_OF_THE_DEPTH_IMAGE_FILE
+- 1. Converting the whole NYU dataset to Point Cloud
+    - open ./depth_2_pc_complete.py and change the following things.
+    - input_path: the path of your unconverted data are stored
+    - output_path: the paht of your 'dataset' folder
+    - scale: this is used to scale down the converted point cloud. if you don't want to scale the point cloud, then make it 1
+    - now run the code below!
+    - python depth_2_pc_complete.py
+    - make sure files have been converted properly by checking the 'dataset' folder. there should be from '000001.pth' to '001449.pth' files in the 'dataset' folder.
+    - now run this code to split the data into train and test 
+    - ./tools/split_dataset.py
+    - after running the code above, files should be moved into the 'train' and 'test' folder automatically
+- 2. Converting 
 - Visualizing
     - python visualize_pc.py NAME_OF_THE_POINT_CLOUD_FILE
  

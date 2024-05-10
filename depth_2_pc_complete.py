@@ -97,9 +97,9 @@ def main(input_path, output_path, num_data, scale):
 
 if __name__ == "__main__":
     # define some things
-    input_path = "/root/datasets/NYU_Depth_V2"
-    output_path = "/root/datasets/NYU_Depth_V2/dataset"
+    input_path = "/root/datasets/NYU_Depth_V2" # change this!
+    output_path = "/root/datasets/NYU_Depth_V2/dataset" # change this!
     num_data = 1449
-    scale = 100.0
+    scale = 1000.0 # divides the point cloud data
     
     main(input_path, output_path, num_data, scale)
