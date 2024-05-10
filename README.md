@@ -43,7 +43,7 @@ This is for my own reference, you do not need to read this section.
 - Complete writing the github README file to share knowledge with others! ✅
 
 
-## NYU Dataset Description
+## NYU Dataset Description 
 This is how the converted dataset is going to be structed in the end.  
 ![alt text](image.png)  
 
@@ -59,13 +59,19 @@ The simplest way is to download the whole NYU dataset. However it's too big. So 
 - Depth, Label, train.txt, test.txt: LINK TO BE CREATED SOON
 - calibration information: [Goto download section and click on toolbox](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)
 
+Okay now that you have downloaded everything, unzip them all! Then, make sturcture your directory like the image below.  
+![alt text](image-2.png)  
 
 ## 1. Installation
+Follow the instructions below.
 - conda create -n NYUDv2 python=3.11
 - conda activate NYUDv2
 - pip install numpy opencv-python open3d
+- conda install pytorch::pytorch
+
 
 ## 2. Code Usage
+If you run into any "missing moudle" erros when running the code please install the missing modules.
 - Converting
     - python depth_2_pc.py NAME_OF_THE_DEPTH_IMAGE_FILE
 - Visualizing
