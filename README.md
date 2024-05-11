@@ -7,7 +7,9 @@ The purpose of this repo is to help you convert NYU Depth V2 Dataset into a Poin
 
 ## Visualization Reuslt
 ![image](https://github.com/parkie0517/NYUDv2_Depth_Image_to_Point_Cloud/assets/80407632/f56250b5-c9bb-42b9-9396-0a85883e991f)  
-(Left: RGB, Middle: Depth, Right: Point Cloud)
+
+<p align="center">(Left: RGB, Middle: Depth, Right: Point Cloud)</p>
+
 
 
 ## Prerequisites
