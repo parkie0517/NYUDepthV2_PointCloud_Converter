@@ -2,7 +2,7 @@
 
 
 ## What is this repository for?!
-The purpose of this repo is to help you convert NYU Depth V2 Dataset into a Point Cloud Dataset. I wanted to test how well 3D Semantic Segmentation (like PointTransformerV3) models can be trained on 2D Depth and 2D RGB images. The NYU Depth V2 Dataset I am converting has 1449 images in total. There are 41 classes including diverse objects. To view the names of the classes click [here](https://github.com/parkie0517/NYUDepthV2_PointCloud_Converter/blob/main/classes.txt). If you want to check out more about NYU Depth V2 dataset, then click [here](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html).
+The purpose of this repo is to help you convert NYU Depth V2 Dataset into a Point Cloud Dataset. I wanted to test how well a 3D Semantic Segmentation model (like PointTransformerV3) can be trained on NYU Depth V2. In order to do so, I first had to convert NYU Depth V2 dataset into a Point Cloud dataset. The NYU Depth V2 Dataset I am converting has 1449 images in total. There are 41 classes including diverse objects. To view the names of the classes click [here](https://github.com/parkie0517/NYUDepthV2_PointCloud_Converter/blob/main/classes.txt). If you want to check out more about the NYU Depth V2 dataset, then click [here](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html).
 
 
 ## Visualization Reuslt
@@ -11,15 +11,64 @@ The purpose of this repo is to help you convert NYU Depth V2 Dataset into a Poin
 <p align="center">(Left: RGB, Middle: Depth, Right: Point Cloud)</p>
 
 
-
 ## Prerequisites
-Below are some knowledge that you need to understand how the reconstruction works.
+Below are some knowledge that you need to have in order to understand how my repo works. However, if you just want to use the conversion code, then you don't need to know about these knowledge.
 - Depth Image
 - Point Cloud
 - Coding & Tech skills (Linux, Python, Numpy, Conda, Shell)
 - 3D Reconstruction (2D Image Coordinate System → 3D Camera Coodinate System)
     - If you do not know about 3D reconstruction, then read this post, written by me :D [3D Recon](https://medium.com/@parkie0517/2d-to-3d-conversion-learning-how-to-convert-rgb-images-to-point-cloud-025a1fd77abe)  
     ![alt text](./images_for_readme/image-1.png)
+
+
+## NYU Dataset Description 
+This is how the converted dataset is going to be structed in the end.  
+![alt text](./images_for_readme/image.png)  
+
+| Dataset | Number of Data | Size (GB) | Average Data Size (MB) |
+|---------|----------------|-----------|------------------------|
+| Train   | 795            | 16        | 20.13                  |
+| Test    | 654            | 13        | 19.88                  |
+
+
+## Prepare NYU Depth V2 Data
+The simplest way is to download the whole NYU dataset. However it's too big. So I will tell you a faster way to download the files that you need.
+- RGB(train & test): [ankurhanda/nyuv2-meta-data](https://github.com/ankurhanda/nyuv2-meta-data?tab=readme-ov-file)
+- Depth, Label, train.txt, test.txt: LINK TO BE CREATED SOON
+- calibration information: [Goto download section and click on toolbox](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)
+
+Okay now that you have downloaded everything, unzip them all! Then, make the sturcture of your directory look like the image shown below.  
+![alt text](./images_for_readme/image-2.png)  
+The 'train' and 'test' folders should be empty. 'depth', 'label40' and 'rgb' folders should have the images from '000001.png' to '001449.png'.
+
+
+## Environment Setup
+Follow the instructions below.
+- conda create -n NYUDv2 python=3.11
+- conda activate NYUDv2
+- pip install numpy opencv-python open3d
+- conda install pytorch::pytorch
+
+
+## Code Usage
+If you run into any "missing moudle" erros when running the code please install the missing modules.
+- 1. Converting the whole NYU dataset to Point Cloud
+    - open ./depth_2_pc_complete.py and change the following things.
+    - input_path: the path of your unconverted data are stored
+    - output_path: the paht of your 'dataset' folder
+    - scale: this is used to scale down the converted point cloud. if you don't want to scale the point cloud, then make it 1
+    - now run the code below!
+    - python depth_2_pc_complete.py
+    - make sure that the files have been converted properly by checking the 'dataset' folder. there should be from '000001.pth' to '001449.pth' files in the 'dataset' folder.
+    - now run this code to split the data into train and test 
+    - ./tools/split_dataset.py
+    - after running the code above, files should be moved into the 'train' and 'test' folder automatically
+- 2. Visualizing the Point Cloud
+    - run the code below to change a png file into a 'pcd' file format (pcd is the point cloud data)
+    - python ./depth_2_pc.py PATH_OF_THE_INPUT_DEPTH_IMAGE
+    - then, you will see a 'output.pcd' file
+    - now run the code below
+    - python visualize_pc.py NAME_OF_THE_POINT_CLOUD_FILE
 
 
 ## What I need to do
@@ -48,53 +97,3 @@ This is for my own reference, you do not need to read this section.
 - Split into train and test ✅
 - Create a visualization code ✅
 - Complete writing the github README file to share knowledge with others! ✅
-
-
-## NYU Dataset Description 
-This is how the converted dataset is going to be structed in the end.  
-![alt text](./images_for_readme/image.png)  
-
-| Dataset | Number of Data | Size (GB) | Average Data Size (MB) |
-|---------|----------------|-----------|------------------------|
-| Train   | 795            | 16        | 20.13                  |
-| Test    | 654            | 13        | 19.88                  |
-
-
-## Prepare NYU Depth V2 Data
-The simplest way is to download the whole NYU dataset. However it's too big. So I will tell you a faster way to download the files that you need.
-- RGB(train & test): [ankurhanda/nyuv2-meta-data](https://github.com/ankurhanda/nyuv2-meta-data?tab=readme-ov-file)
-- Depth, Label, train.txt, test.txt: LINK TO BE CREATED SOON
-- calibration information: [Goto download section and click on toolbox](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)
-
-Okay now that you have downloaded everything, unzip them all! Then, make the sturcture of your directory look like the image shown below.  
-![alt text](./images_for_readme/image-2.png)  
-The train and test folders should be empty. depth, label40 and rgb folders should have the images from 000001.png to 001449.png.
-
-
-## Installation
-Follow the instructions below.
-- conda create -n NYUDv2 python=3.11
-- conda activate NYUDv2
-- pip install numpy opencv-python open3d
-- conda install pytorch::pytorch
-
-
-## Code Usage
-If you run into any "missing moudle" erros when running the code please install the missing modules.
-- 1. Converting the whole NYU dataset to Point Cloud
-    - open ./depth_2_pc_complete.py and change the following things.
-    - input_path: the path of your unconverted data are stored
-    - output_path: the paht of your 'dataset' folder
-    - scale: this is used to scale down the converted point cloud. if you don't want to scale the point cloud, then make it 1
-    - now run the code below!
-    - python depth_2_pc_complete.py
-    - make sure that the files have been converted properly by checking the 'dataset' folder. there should be from '000001.pth' to '001449.pth' files in the 'dataset' folder.
-    - now run this code to split the data into train and test 
-    - ./tools/split_dataset.py
-    - after running the code above, files should be moved into the 'train' and 'test' folder automatically
-- 2. Visualizing the Point Cloud
-    - run the code below to change a png file into a 'pcd' file format (pcd is the point cloud data)
-    - python ./depth_2_pc.py PATH_OF_THE_INPUT_DEPTH_IMAGE
-    - then, you will see a 'output.pcd' file
-    - now run the code below
-    - python visualize_pc.py NAME_OF_THE_POINT_CLOUD_FILE
