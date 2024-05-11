@@ -5,6 +5,11 @@
 The purpose of this repo is to help you convert NYU Depth V2 Dataset into a Point Cloud Dataset. I wanted to test how well 3D Semantic Segmentation (like PointTransformerV3) models can be trained on 2D Depth and 2D RGB images. The NYU Depth V2 Dataset I am converting has 1449 images in total. There are 41 classes including diverse objects. To view the names of the classes click [here](https://github.com/parkie0517/NYUDepthV2_PointCloud_Converter/blob/main/classes.txt). If you want to check out more about NYU Depth V2 dataset, then click [here](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html).
 
 
+## Visualization Reuslt
+![image](https://github.com/parkie0517/NYUDv2_Depth_Image_to_Point_Cloud/assets/80407632/f56250b5-c9bb-42b9-9396-0a85883e991f)  
+(Left: RGB, Middle: Depth, Right: Point Cloud)
+
+
 ## Prerequisites
 Below are some knowledge that you need to understand how the reconstruction works.
 - Depth Image
@@ -64,7 +69,7 @@ Okay now that you have downloaded everything, unzip them all! Then, make the stu
 The train and test folders should be empty. depth, label40 and rgb folders should have the images from 000001.png to 001449.png.
 
 
-## 1. Installation
+## Installation
 Follow the instructions below.
 - conda create -n NYUDv2 python=3.11
 - conda activate NYUDv2
@@ -72,7 +77,7 @@ Follow the instructions below.
 - conda install pytorch::pytorch
 
 
-## 2. Code Usage
+## Code Usage
 If you run into any "missing moudle" erros when running the code please install the missing modules.
 - 1. Converting the whole NYU dataset to Point Cloud
     - open ./depth_2_pc_complete.py and change the following things.
@@ -91,7 +96,3 @@ If you run into any "missing moudle" erros when running the code please install 
     - then, you will see a 'output.pcd' file
     - now run the code below
     - python visualize_pc.py NAME_OF_THE_POINT_CLOUD_FILE
- 
-## 3. Visualization Reuslt
-![image](https://github.com/parkie0517/NYUDv2_Depth_Image_to_Point_Cloud/assets/80407632/f56250b5-c9bb-42b9-9396-0a85883e991f)  
-(Left: RGB, Middle: Depth, Right: Point Cloud)
