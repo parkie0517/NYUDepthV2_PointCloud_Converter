@@ -37,7 +37,7 @@ The simplest way is to download NYU dataset is to just download the whole NYU da
 - Depth, Label, train.txt, test.txt: LINK TO BE CREATED SOON
 - calibration information: [Goto download section and click on toolbox](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html)
 
-Okay now that you have downloaded everything, unzip them all! Then, make the sturcture of your directory look like the image shown below.  
+Okay now that you have downloaded everything, unzip them all! Then, make the sturcture of your directory looks like the image shown below.  
 ![alt text](./images_for_readme/image-2.png)  
 The 'train' and 'test' folders should be empty. 'depth', 'label40' and 'rgb' folders should have the images from '000001.png' to '001449.png'.
 
