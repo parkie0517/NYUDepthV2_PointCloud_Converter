@@ -1,7 +1,7 @@
 # NYUDepthV2_PointCloud_Converter
 
 
-## What is this repository for?!
+## What is this repository for?
 The purpose of this repo is to help you convert NYU Depth V2 Dataset into a Point Cloud Dataset. I wanted to test how well a 3D Semantic Segmentation model (like PointTransformerV3) can be trained on NYU Depth V2. In order to do so, I first had to convert NYU Depth V2 dataset into a Point Cloud dataset. The NYU Depth V2 Dataset I am converting has 1449 images in total. There are 41 classes including diverse objects. To view the names of the classes click [here](https://github.com/parkie0517/NYUDepthV2_PointCloud_Converter/blob/main/classes.txt). If you want to check out more about the NYU Depth V2 dataset, then click [here](https://cs.nyu.edu/~fergus/datasets/nyu_depth_v2.html).
 
 
@@ -73,7 +73,7 @@ If you run into any "missing moudle" errors when trying to run the code, please 
 
 
 ## What I need to do
-This is for my own reference, you do not need to read this section.
+This is for my own reference.
 - Download the NYU Depth V2 Data ✅
     - RGB, Depth, Label40, train.txt, test.txt
     - Check if they are downloaded well
